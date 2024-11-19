@@ -1,20 +1,20 @@
 export default class Parafuso {
-    private espessura!: number;
-    private comprimento!: number;
+    private espessura!: string;
+    private comprimento!: string;
 
-    public getEspessura(): number {
+    public getEspessura(): string {
         return this.espessura;
     }
 
-    public setEspessura(expessura: number): void {
+    public setEspessura(expessura: string): void {
         this.espessura = expessura;
     }
 
-    public getComprimento(): number {
+    public getComprimento(): string {
         return this.comprimento;
     }
     
-    public setComprimento(comprimento: number): void {
+    public setComprimento(comprimento: string): void {
         this.comprimento = comprimento;
     }
 }
