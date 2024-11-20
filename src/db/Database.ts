@@ -11,4 +11,7 @@ export default class Database {
     public addNewParafuso(parafuso: Parafuso): void{
         this.parafusos.push(parafuso);
     }
+
+    
+
 }

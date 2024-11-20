@@ -16,20 +16,50 @@ export default class PrimaryScreen {
         let showScreen: boolean = true;
 
         while (showScreen) {
-            let choice = this.prompt("Escolha\n1 - Cadastro\n2 - Listar\n3 - Apagar\n5 - Sair\n")
+            console.clear();
+            console.log("|=========ToolBoard=========|")
+            console.log("|1 - Cadastro               |");
+            console.log("|2 - Listar                 |");
+            console.log("|3 - Apagar                 |");
+            console.log("|4 - Sair                   |");
+            console.log("|___________________________|");
+            let choice = this.prompt("> ")
+            
             switch (choice) {
                 case "1":
-                    this.parafusoScreen.registerParafuso();
-                    break;    
+                    console.log("|=====Escolha Cadastro:=====|");
+                    console.log("|1 - Parafuso Máquina       |")
+                    console.log("|2 - Parafuso Soberbo       |");
+                    console.log("|___________________________|")
+                    
+                    let choice2 = this.prompt("> ");
+                    switch (choice2) {
+                        case "1":
+                            this.parafusoScreen.registerParafusoMaquina();
+                            break;    
+                        case "2":
+                            this.parafusoScreen.regiterParafusoSoberbo();
+                            break;
+                        default: 
+                            console.log("Opção inválida");
+                            break    
+                    }
+                break;    
                 
                 case "2":
                     this.parafusoScreen.listParafusos();
                     break;    
+                
+                case "4":
+                    console.log("Saindo...");
+                    showScreen = false;
+                    break;
                 default:
                     console.log("Opção inválida");
                     break;
             }
             
+            this.prompt("Pressione Enter para continuar");
         
         
         

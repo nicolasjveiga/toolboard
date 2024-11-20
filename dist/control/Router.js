@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Database_1 = __importDefault(require("../db/Database"));
 const ParafusoController_1 = __importDefault(require("./ParafusoController"));
 const PrimaryScreen_1 = __importDefault(require("../view/PrimaryScreen"));
-//import ParafusoScreen from "../view/ParafusoScreen";
 class Router {
     getDatabase() {
         return this.db;
