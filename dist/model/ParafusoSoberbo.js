@@ -1,15 +1,15 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Parafuso_1 = __importDefault(require("./Parafuso"));
-class ParafusoSoberbo extends Parafuso_1.default {
+const Parafuso_1 = require("./Parafuso");
+class ParafusoSoberbo extends Parafuso_1.Parafuso {
     getBucha() {
         return this.bucha;
     }
     setBucha(bucha) {
         this.bucha = bucha;
+    }
+    getDescricao() {
+        return `Parafuso Soberbo: bucha - ${this.bucha}`;
     }
 }
 exports.default = ParafusoSoberbo;

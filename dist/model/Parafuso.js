@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Parafuso = void 0;
 class Parafuso {
     getEspessura() {
         return this.espessura;
@@ -14,4 +15,4 @@ class Parafuso {
         this.comprimento = comprimento;
     }
 }
-exports.default = Parafuso;
+exports.Parafuso = Parafuso;

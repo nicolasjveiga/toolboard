@@ -14,4 +14,4 @@ export default class Router {
     constructor(){
         this.ps.getFirstScreen();
     }
-}
+}   

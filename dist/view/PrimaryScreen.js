@@ -45,7 +45,6 @@ class PrimaryScreen {
                     this.parafusoScreen.listParafusos();
                     break;
                 case "4":
-                    console.log("Saindo...");
                     showScreen = false;
                     break;
                 default:

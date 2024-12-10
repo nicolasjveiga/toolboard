@@ -1,4 +1,4 @@
-import Parafuso from "./Parafuso";
+import { Parafuso } from "./Parafuso";
 
 export default class ParafusoMaquina extends Parafuso{
     private rosca!: string;
@@ -8,6 +8,10 @@ export default class ParafusoMaquina extends Parafuso{
     }
 
     public setRosca(rosca: string): void {
-        this.rosca = rosca 
+        this.rosca = rosca; 
+    }
+
+    public getDescricao(): string {
+        return `Parafuso Máquina: rosca - ${this.rosca}`;
     }
 }

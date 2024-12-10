@@ -4,20 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
-const ParafusoMaquina_1 = __importDefault(require("../model/ParafusoMaquina"));
-const ParafusoSoberbo_1 = __importDefault(require("../model/ParafusoSoberbo"));
 class ParafusoScreen {
     constructor(router) {
         this.prompt = (0, prompt_sync_1.default)();
         this.router = router;
-    }
-    registerParafuso() {
-        let parafuso = this.router.parafusoController.getNewParafuso();
-        let parafusoEspessura = this.prompt("Digite a espessura do Parafuso: ");
-        parafuso.setEspessura(parafusoEspessura);
-        let parafusoComprimento = this.prompt("Digite o comprimento do Parafuso: ");
-        parafuso.setComprimento(parafusoComprimento);
-        this.router.parafusoController.registerNewParafuso(parafuso);
     }
     registerParafusoMaquina() {
         let parafusoMaquina = this.router.parafusoController.getNewParafusoMaquina();
@@ -51,13 +41,13 @@ class ParafusoScreen {
                 console.log(`Tipo: ${parafuso.constructor.name}`);
                 console.log(`Espessura: ${parafuso.getEspessura()}`);
                 console.log(`Comprimento: ${parafuso.getComprimento()}`);
-                if (parafuso instanceof ParafusoMaquina_1.default) {
-                    console.log(`Rosca: ${parafuso.getRosca()}`);
-                }
-                else if (parafuso instanceof ParafusoSoberbo_1.default) {
+                console.log(parafuso.getDescricao());
+                /*if(parafuso instanceof ParafusoMaquina) {
+                    console.log(`Rosca: ${parafuso.getRosca()}`)
+                } else if (parafuso instanceof ParafusoSoberbo) {
                     console.log(`Bucha: ${parafuso.getBucha()}`);
                 }
-                console.log("");
+                console.log("")*/
             });
         }
     }

@@ -3,15 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Parafuso_1 = __importDefault(require("../model/Parafuso"));
 const ParafusoMaquina_1 = __importDefault(require("../model/ParafusoMaquina"));
 const ParafusoSoberbo_1 = __importDefault(require("../model/ParafusoSoberbo"));
 class ParafusoController {
     constructor(db) {
-        this.db = db;
-    }
-    getNewParafuso() {
-        return new Parafuso_1.default();
+        this.db = db; //Injeção de dependência do database
+        //O ParafusoController depende da funcionalidade de Database, mas ele não cria a instância
+        // diretamente. Em vez disso, o Router injeta essa dependência.
     }
     registerNewParafuso(parafuso) {
         this.db.addNewParafuso(parafuso);

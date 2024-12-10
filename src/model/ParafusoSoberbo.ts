@@ -1,4 +1,4 @@
-import Parafuso from "./Parafuso";
+import { Parafuso } from "./Parafuso";
 
 export default class ParafusoSoberbo extends Parafuso {
     private bucha!: string;
@@ -9,5 +9,9 @@ export default class ParafusoSoberbo extends Parafuso {
 
     public setBucha(bucha: string): void {
         this.bucha = bucha; 
+    }
+
+    public getDescricao(): string {
+        return `Parafuso Soberbo: bucha - ${this.bucha}`;
     }
 }

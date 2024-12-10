@@ -1,4 +1,4 @@
-export default class Parafuso {
+export abstract class Parafuso {
     private espessura!: string;
     private comprimento!: string;
 
@@ -17,4 +17,6 @@ export default class Parafuso {
     public setComprimento(comprimento: string): void {
         this.comprimento = comprimento;
     }
+
+    public abstract getDescricao(): string;
 }

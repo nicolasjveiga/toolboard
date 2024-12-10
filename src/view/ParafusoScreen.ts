@@ -1,6 +1,6 @@
 import PromptSync from "prompt-sync";
 import Router from "../control/Router";
-import Parafuso from "../model/Parafuso";
+import { Parafuso } from "../model/Parafuso";
 import ParafusoMaquina from "../model/ParafusoMaquina";
 import ParafusoSoberbo from "../model/ParafusoSoberbo";
 
@@ -10,19 +10,6 @@ export default class ParafusoScreen {
 
     constructor(router: Router) {
         this.router = router;
-    }
-
-    public registerParafuso(): void {
-        let parafuso: Parafuso = this.router.parafusoController.getNewParafuso();
-        
-        let parafusoEspessura = this.prompt("Digite a espessura do Parafuso: ");
-        parafuso.setEspessura(parafusoEspessura);
-
-        let parafusoComprimento = this.prompt("Digite o comprimento do Parafuso: ")
-        parafuso.setComprimento(parafusoComprimento);
-    
-        this.router.parafusoController.registerNewParafuso(parafuso);
-    
     }
 
     public registerParafusoMaquina(): void {
@@ -68,13 +55,8 @@ export default class ParafusoScreen {
                 console.log(`Tipo: ${parafuso.constructor.name}`)
                 console.log(`Espessura: ${parafuso.getEspessura()}`)
                 console.log(`Comprimento: ${parafuso.getComprimento()}`)
-            
-                if(parafuso instanceof ParafusoMaquina) {
-                    console.log(`Rosca: ${parafuso.getRosca()}`)
-                } else if (parafuso instanceof ParafusoSoberbo) {
-                    console.log(`Bucha: ${parafuso.getBucha()}`);
-                }
-                console.log("")
+                console.log(parafuso.getDescricao());
+                
             })
         }
 

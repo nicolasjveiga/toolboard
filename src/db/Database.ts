@@ -1,4 +1,4 @@
-import Parafuso from "../model/Parafuso";
+import { Parafuso } from "../model/Parafuso";
 
 export default class Database {
 
