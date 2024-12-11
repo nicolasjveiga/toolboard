@@ -8,8 +8,14 @@ class ParafusoMaquina extends Parafuso_1.Parafuso {
     setRosca(rosca) {
         this.rosca = rosca;
     }
+    getClasseResistencia() {
+        return this.classeResistencia;
+    }
+    setClasseResistencia(resistencia) {
+        this.classeResistencia = resistencia;
+    }
     getDescricao() {
-        return `Parafuso máquina: rosca - ${this.rosca}`;
+        return `Parafuso Máquina: rosca - ${this.rosca}`;
     }
 }
 exports.default = ParafusoMaquina;

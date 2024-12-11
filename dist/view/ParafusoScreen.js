@@ -15,11 +15,13 @@ class ParafusoScreen {
         parafusoMaquina.setEspessura(parafusoEspessura);
         let parafusoComprimento = this.prompt("Digite o comprimento do Parafuso Máquina: ");
         parafusoMaquina.setComprimento(parafusoComprimento);
-        let parafusoMaquinaRosca = this.prompt("Digite a rosca do Parafuso (ex: Rosca grossa ou fina): ");
+        let parafusoMaquinaRosca = this.prompt("Digite a rosca do Parafuso (ex: MA ou MB): ");
         parafusoMaquina.setRosca(parafusoMaquinaRosca);
-        this.router.parafusoController.registerNewParafuso(parafusoMaquina);
+        let parafusoMaquinaResistencia = this.prompt("Digite a Resistência do parafuso(ex:5.8 ou 8.8):");
+        parafusoMaquina.setClasseResistencia(parafusoMaquinaResistencia);
+        this.router.parafusoController.registerParafusoMaquina(parafusoMaquina);
     }
-    regiterParafusoSoberbo() {
+    registerParafusoSoberbo() {
         let parafusoSoberbo = this.router.parafusoController.getNewParafusoSoberbo();
         let parafusoEspessura = this.prompt("Digite a espessura do Parafuso Soberbo: ");
         parafusoSoberbo.setEspessura(parafusoEspessura);
@@ -27,7 +29,9 @@ class ParafusoScreen {
         parafusoSoberbo.setComprimento(parafusoComprimento);
         let parafusoSoberboBucha = this.prompt("Digite a medida da bucha do Parafuso: ");
         parafusoSoberbo.setBucha(parafusoSoberboBucha);
-        this.router.parafusoController.registerNewParafuso(parafusoSoberbo);
+        let parafusoSoberboResistencia = this.prompt("Digite a Resistência do parafuso(ex:5.8 ou 8.8):");
+        parafusoSoberbo.setClasseResistencia(parafusoSoberboResistencia);
+        this.router.parafusoController.registerParafusoSoberbo(parafusoSoberbo);
     }
     listParafusos() {
         const parafusos = this.router.getDatabase().getAllParafusos();
@@ -42,12 +46,7 @@ class ParafusoScreen {
                 console.log(`Espessura: ${parafuso.getEspessura()}`);
                 console.log(`Comprimento: ${parafuso.getComprimento()}`);
                 console.log(parafuso.getDescricao());
-                /*if(parafuso instanceof ParafusoMaquina) {
-                    console.log(`Rosca: ${parafuso.getRosca()}`)
-                } else if (parafuso instanceof ParafusoSoberbo) {
-                    console.log(`Bucha: ${parafuso.getBucha()}`);
-                }
-                console.log("")*/
+                console.log(`Resistência: ${parafuso.getClasseResistencia()} `);
             });
         }
     }

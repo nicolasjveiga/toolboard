@@ -3,6 +3,7 @@ import Router from "../control/Router";
 import { Parafuso } from "../model/Parafuso";
 import ParafusoMaquina from "../model/ParafusoMaquina";
 import ParafusoSoberbo from "../model/ParafusoSoberbo";
+import Resistencia from "../model/Resistencia";
 
 export default class ParafusoScreen {
     private prompt = PromptSync();
@@ -21,13 +22,16 @@ export default class ParafusoScreen {
         let parafusoComprimento = this.prompt("Digite o comprimento do Parafuso Máquina: ");
         parafusoMaquina.setComprimento(parafusoComprimento);
 
-        let parafusoMaquinaRosca = this.prompt("Digite a rosca do Parafuso (ex: Rosca grossa ou fina): ");
+        let parafusoMaquinaRosca = this.prompt("Digite a rosca do Parafuso (ex: MA ou MB): ");
         parafusoMaquina.setRosca(parafusoMaquinaRosca);
         
-        this.router.parafusoController.registerNewParafuso(parafusoMaquina);
+        let parafusoMaquinaResistencia = this.prompt("Digite a Resistência do parafuso(ex:5.8 ou 8.8):");
+        parafusoMaquina.setClasseResistencia(parafusoMaquinaResistencia);
+
+        this.router.parafusoController.registerParafusoMaquina(parafusoMaquina);
     }
 
-    public regiterParafusoSoberbo(): void {
+    public registerParafusoSoberbo(): void {
         let parafusoSoberbo: ParafusoSoberbo = this.router.parafusoController.getNewParafusoSoberbo();
         
         let parafusoEspessura = this.prompt("Digite a espessura do Parafuso Soberbo: ");
@@ -39,7 +43,10 @@ export default class ParafusoScreen {
         let parafusoSoberboBucha = this.prompt("Digite a medida da bucha do Parafuso: ");
         parafusoSoberbo.setBucha(parafusoSoberboBucha);
         
-        this.router.parafusoController.registerNewParafuso(parafusoSoberbo);
+        let parafusoSoberboResistencia = this.prompt("Digite a Resistência do parafuso(ex: 5.8 ou 8.8):");
+        parafusoSoberbo.setClasseResistencia(parafusoSoberboResistencia);
+
+        this.router.parafusoController.registerParafusoSoberbo(parafusoSoberbo);
     }
 
 
@@ -56,7 +63,7 @@ export default class ParafusoScreen {
                 console.log(`Espessura: ${parafuso.getEspessura()}`)
                 console.log(`Comprimento: ${parafuso.getComprimento()}`)
                 console.log(parafuso.getDescricao());
-                
+                console.log(`Resistência: ${parafuso.getClasseResistencia()} `)
             })
         }
 

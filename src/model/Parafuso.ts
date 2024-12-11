@@ -1,3 +1,5 @@
+import Resistencia from "./Resistencia";
+
 export abstract class Parafuso {
     private espessura!: string;
     private comprimento!: string;
@@ -17,6 +19,8 @@ export abstract class Parafuso {
     public setComprimento(comprimento: string): void {
         this.comprimento = comprimento;
     }
+
+    public abstract getClasseResistencia(): string;
 
     public abstract getDescricao(): string;
 }

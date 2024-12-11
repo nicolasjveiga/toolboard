@@ -8,6 +8,12 @@ class ParafusoSoberbo extends Parafuso_1.Parafuso {
     setBucha(bucha) {
         this.bucha = bucha;
     }
+    getClasseResistencia() {
+        return this.classeResistencia;
+    }
+    setClasseResistencia(resistencia) {
+        this.classeResistencia = resistencia;
+    }
     getDescricao() {
         return `Parafuso Soberbo: bucha - ${this.bucha}`;
     }

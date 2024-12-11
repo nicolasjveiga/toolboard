@@ -38,7 +38,7 @@ export default class PrimaryScreen {
                             this.parafusoScreen.registerParafusoMaquina();
                             break;    
                         case "2":
-                            this.parafusoScreen.regiterParafusoSoberbo();
+                            this.parafusoScreen.registerParafusoSoberbo();
                             break;
                         default: 
                             console.log("Opção inválida");
