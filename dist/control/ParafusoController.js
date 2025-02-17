@@ -7,24 +7,22 @@ const ParafusoMaquina_1 = __importDefault(require("../model/ParafusoMaquina"));
 const ParafusoSoberbo_1 = __importDefault(require("../model/ParafusoSoberbo"));
 class ParafusoController {
     constructor(db) {
-        this.db = db; //Injeção de dependência do database
-        //O ParafusoController depende da funcionalidade de Database, mas ele não cria a instância
-        // diretamente. Em vez disso, o Router injeta essa dependência.
+        this.db = db;
     }
     registerNewParafuso(parafuso) {
-        this.db.addNewParafuso(parafuso);
+        this.db.add(parafuso);
     }
     getNewParafusoMaquina() {
         return new ParafusoMaquina_1.default;
     }
     registerParafusoMaquina(parafusoMaquina) {
-        this.db.addNewParafuso(parafusoMaquina);
+        this.db.add(parafusoMaquina);
     }
     getNewParafusoSoberbo() {
         return new ParafusoSoberbo_1.default;
     }
     registerParafusoSoberbo(ParafusoSoberbo) {
-        this.db.addNewParafuso(ParafusoSoberbo);
+        this.db.add(ParafusoSoberbo);
     }
 }
 exports.default = ParafusoController;

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const ParafusoScreen_1 = __importDefault(require("./ParafusoScreen"));
+const DeleteSreen_1 = __importDefault(require("./DeleteSreen"));
 class PrimaryScreen {
     constructor(router) {
         this.prompt = (0, prompt_sync_1.default)();
@@ -43,6 +44,10 @@ class PrimaryScreen {
                     break;
                 case "2":
                     this.parafusoScreen.listParafusos();
+                    break;
+                case "3":
+                    const deleteScreen = new DeleteSreen_1.default(this.router);
+                    deleteScreen.getDeleteScreen();
                     break;
                 case "4":
                     showScreen = false;

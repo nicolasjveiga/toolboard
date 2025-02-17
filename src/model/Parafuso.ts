@@ -1,5 +1,3 @@
-import Resistencia from "./Resistencia";
-
 export abstract class Parafuso {
     private espessura!: string;
     private comprimento!: string;

@@ -4,6 +4,7 @@ import { Parafuso } from "../model/Parafuso";
 import ParafusoMaquina from "../model/ParafusoMaquina";
 import ParafusoSoberbo from "../model/ParafusoSoberbo";
 import Resistencia from "../model/Resistencia";
+import InvalidInputException from "../model/InvalidInputException";
 
 export default class ParafusoScreen {
     private prompt = PromptSync();
@@ -21,11 +22,33 @@ export default class ParafusoScreen {
 
         let parafusoComprimento = this.prompt("Digite o comprimento do Parafuso Máquina: ");
         parafusoMaquina.setComprimento(parafusoComprimento);
-
-        let parafusoMaquinaRosca = this.prompt("Digite a rosca do Parafuso (ex: MA ou MB): ");
-        parafusoMaquina.setRosca(parafusoMaquinaRosca);
         
-        let parafusoMaquinaResistencia = this.prompt("Digite a Resistência do parafuso(ex:5.8 ou 8.8):");
+        let parafusoMaquinaRosca: string;
+        while (true) {
+            try {
+                parafusoMaquinaRosca = this.prompt("Digite a rosca do Parafuso (ex: MA ou MB): ");
+                if (parafusoMaquinaRosca !== "MA" && parafusoMaquinaRosca !== "MB") {
+                    throw new InvalidInputException("Rosca inválida, utilize MA ou MB.");
+                }
+                break; 
+            } catch (e: any) {
+                console.log(e.message);
+            }
+        }
+        parafusoMaquina.setRosca(parafusoMaquinaRosca);
+
+        let parafusoMaquinaResistencia: string;
+        while(true){
+            try {
+                parafusoMaquinaResistencia = this.prompt("Digite a Resistência do parafuso(ex:5.8 ou 8.8):");
+                if(parafusoMaquinaResistencia !== "5.8" && parafusoMaquinaResistencia !== "8.8"){
+                    throw new InvalidInputException("Resistencia inválida, Utilize 8.8 ou 5.8")
+                }
+                break;
+            } catch (e: any) {
+                console.log(e.message);
+            }
+        }
         parafusoMaquina.setClasseResistencia(parafusoMaquinaResistencia);
 
         this.router.parafusoController.registerParafusoMaquina(parafusoMaquina);
@@ -44,6 +67,17 @@ export default class ParafusoScreen {
         parafusoSoberbo.setBucha(parafusoSoberboBucha);
         
         let parafusoSoberboResistencia = this.prompt("Digite a Resistência do parafuso(ex: 5.8 ou 8.8):");
+        while(true){
+            try {
+                parafusoSoberboResistencia = this.prompt("Digite a Resistência do parafuso(ex:5.8 ou 8.8):");
+                if(parafusoSoberboResistencia !== "5.8" && parafusoSoberboResistencia !== "8.8"){
+                    throw new InvalidInputException("Resistencia inválida, Utilize 8.8 ou 5.8")
+                }
+                break;
+            } catch (e: any) {
+                console.log(e.message);
+            }
+        }
         parafusoSoberbo.setClasseResistencia(parafusoSoberboResistencia);
 
         this.router.parafusoController.registerParafusoSoberbo(parafusoSoberbo);
@@ -51,7 +85,7 @@ export default class ParafusoScreen {
 
 
     public listParafusos(): void {
-        const parafusos: Parafuso[] = this.router.getDatabase().getAllParafusos();
+        const parafusos: Parafuso[] = this.router.getDatabase().getAll();
 
         if (parafusos.length === 0) {
             console.log("Nenhum Parafuso cadastrado.");
@@ -62,7 +96,6 @@ export default class ParafusoScreen {
                 console.log(`Tipo: ${parafuso.constructor.name}`)
                 console.log(`Espessura: ${parafuso.getEspessura()}`)
                 console.log(`Comprimento: ${parafuso.getComprimento()}`)
-                console.log(parafuso.getDescricao());
                 console.log(`Resistência: ${parafuso.getClasseResistencia()} `)
             })
         }

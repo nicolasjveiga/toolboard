@@ -5,16 +5,14 @@ import { Parafuso } from "../model/Parafuso";
 
 export default class ParafusoController{
 
-    private db!: Database;
+    private db!: Database<Parafuso>;
     
-    constructor(db: Database) {
-        this.db = db; //Injeção de dependência do database
-        //O ParafusoController depende da funcionalidade de Database, mas ele não cria a instância
-        // diretamente. Em vez disso, o Router injeta essa dependência.
+    constructor(db: Database<Parafuso>) {
+        this.db = db;
     }
 
     public registerNewParafuso(parafuso: Parafuso): void {
-        this.db.addNewParafuso(parafuso);
+        this.db.add(parafuso);
     }
 
     public getNewParafusoMaquina(): ParafusoMaquina{
@@ -22,7 +20,7 @@ export default class ParafusoController{
     }
     
     public registerParafusoMaquina(parafusoMaquina: ParafusoMaquina): void{
-        this.db.addNewParafuso(parafusoMaquina);
+        this.db.add(parafusoMaquina);
     }
 
     public getNewParafusoSoberbo(): ParafusoSoberbo{
@@ -30,7 +28,7 @@ export default class ParafusoController{
        }
 
     public registerParafusoSoberbo(ParafusoSoberbo: ParafusoSoberbo): void{
-       this.db.addNewParafuso(ParafusoSoberbo);
+       this.db.add(ParafusoSoberbo);
     }
 }
 

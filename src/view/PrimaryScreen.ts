@@ -1,6 +1,7 @@
 import promptSync from "prompt-sync"
 import Router from "../control/Router";
 import ParafusoScreen from "./ParafusoScreen";
+import DeleteScreen from "./DeleteSreen";
 
 export default class PrimaryScreen {
     private prompt = promptSync();
@@ -49,7 +50,10 @@ export default class PrimaryScreen {
                 case "2":
                     this.parafusoScreen.listParafusos();
                     break;    
-                
+                case "3":
+                    const deleteScreen = new DeleteScreen(this.router);
+                    deleteScreen.getDeleteScreen();
+                    break;
                 case "4":
                     showScreen = false;
                     break;

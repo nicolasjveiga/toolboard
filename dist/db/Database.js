@@ -2,13 +2,26 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Database {
     constructor() {
-        this.parafusos = [];
+        this.items = [];
     }
-    getAllParafusos() {
-        return this.parafusos;
+    getAll() {
+        return this.items;
     }
-    addNewParafuso(parafuso) {
-        this.parafusos.push(parafuso);
+    add(itemOrItems) {
+        if (Array.isArray(itemOrItems)) {
+            this.items.push(...itemOrItems);
+        }
+        else {
+            this.items.push(itemOrItems);
+        }
+    }
+    removeAt(index) {
+        if (index >= 0 && index < this.items.length) {
+            this.items.splice(index, 1);
+        }
+        else {
+            console.log("Indíce inválido para remoção.");
+        }
     }
 }
 exports.default = Database;
