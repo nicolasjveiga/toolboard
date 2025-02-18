@@ -83,6 +83,7 @@ class ParafusoScreen {
                 console.log(`Espessura: ${parafuso.getEspessura()}`);
                 console.log(`Comprimento: ${parafuso.getComprimento()}`);
                 console.log(`Resistência: ${parafuso.getClasseResistencia()} `);
+                console.log(`${parafuso.getDescricao()}`);
             });
         }
     }

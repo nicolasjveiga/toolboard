@@ -12,7 +12,7 @@ export default class ParafusoSoberbo extends Parafuso implements Resistencia {
     public setBucha(bucha: string): void {
         this.bucha = bucha; 
     }
-
+    
     public getClasseResistencia(): string {
         return this.classeResistencia
     }
